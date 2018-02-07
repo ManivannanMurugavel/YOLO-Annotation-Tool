@@ -1,7 +1,9 @@
 # YOLO-Annotation-Tool
-This is for create the training set of image to YOLO
+This is for creating the training set of images for YOLO
 
-git clone 
+Commands on terminal:
+
+git clone https://github.com/ManivannanMurugavel/YOLO-Annotation-Tool.git
 
 cd YOLO-Annotation-Tool
 
