@@ -82,7 +82,7 @@ for txt_name in txt_name_list:
             ymax = elems[3]
             print(elems[0])
             #
-            img_path = str('%s/images/%s/%s.JPEG'%(wd, cls, os.path.splitext(txt_name)[0]))
+            img_path = str('%s/Images/%s/%s.jpg'%(wd, cls, os.path.splitext(txt_name)[0]))
             #t = magic.from_file(img_path)
             #wh= re.search('(\d+) x (\d+)', t).groups()
             im=Image.open(img_path)
@@ -100,6 +100,6 @@ for txt_name in txt_name_list:
 
     """ Save those images with bb into list"""
     if(ct != 0):
-        list_file.write('%s/images/%s/%s.JPEG\n'%(wd, cls, os.path.splitext(txt_name)[0]))
+        list_file.write('%s/Images/%s/%s.jpg\n'%(wd, cls, os.path.splitext(txt_name)[0]))
                 
 list_file.close()       
