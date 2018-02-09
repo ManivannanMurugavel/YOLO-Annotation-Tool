@@ -1,12 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Dec  9 14:55:43 2015
-
-This script is to convert the txt annotation files to appropriate format needed by YOLO 
-
-@author: Guanghan Ning
-Email: gnxr9@mail.missouri.edu
-"""
 
 import os
 from os import walk, getcwd
@@ -28,7 +19,6 @@ def convert(size, box):
     return (x,y,w,h)
     
     
-"""-------------------------------------------------------------------""" 
 
 """ Configure Paths"""   
 mypath = "./Labels/001/"
