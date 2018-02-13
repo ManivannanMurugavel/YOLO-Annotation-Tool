@@ -1,1 +1,0 @@
-mogrify -format jpg *.JPEG
