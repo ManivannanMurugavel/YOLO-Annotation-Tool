@@ -11,13 +11,13 @@ cd YOLO-Annotation-Tool
 
 ### Convert to .JPEG from any type of images. Use this command(Ubuntu)
 
-mogrify -format JPEG *.jpg
+```mogrify -format JPEG *.jpg```
 
-``` Run Main python script ```
+### Run Main python script 
 
-python main.py
+ ``` python main.py ```
 
-``` Run convert python file for create final text file for yolo images ```
+### Run convert python file for create final text file for yolo images 
 
-python convert.py
+```python convert.py```
 # -------Progress-------
