@@ -3,7 +3,7 @@ import os
 from os import walk, getcwd
 from PIL import Image
 
-classes = ["001"]
+classes = ["001","002"]
 
 def convert(size, box):
     dw = 1./size[0]
@@ -21,10 +21,10 @@ def convert(size, box):
     
 
 """ Configure Paths"""   
-mypath = "./Labels/001/"
+mypath = "./Labels/002/"
 outpath = "./Labels/output/"
 
-cls = "001"
+cls = "002"
 if cls not in classes:
     exit(0)
 cls_id = classes.index(cls)

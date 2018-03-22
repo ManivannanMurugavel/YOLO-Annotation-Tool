@@ -125,7 +125,7 @@ class LabelTool():
             self.parent.focus()
             self.category = int(s)
         else:
-            s = './Images/002/'
+            s = './Images/003/'
 ##        if not os.path.isdir(s):
 ##            tkMessageBox.showerror("Error!", message = "The specified dir doesn't exist!")
 ##            return
@@ -148,7 +148,8 @@ class LabelTool():
             os.mkdir(self.outDir)
 
         # load example bboxes
-        self.egDir = os.path.join(r'./Examples', '%03d' %(self.category))
+        self.egDir = os.path.join(r'./Examples', '001')
+        #self.egDir = os.path.join(r'./Examples', '%03d' %(self.category))
         if not os.path.exists(self.egDir):
             return
         filelist = glob.glob(os.path.join(self.egDir, '*.jpg'))
@@ -203,6 +204,7 @@ class LabelTool():
     def saveImage(self):
         with open(self.labelfilename, 'w') as f:
             f.write('%d\n' %len(self.bboxList))
+            print(len(self.bboxList))
             for bbox in self.bboxList:
                 f.write(' '.join(map(str, bbox)) + '\n')
         print 'Image No. %d saved' %(self.cur)
