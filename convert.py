@@ -1,9 +1,12 @@
-
+#This is the convert.py
 import os
 from os import walk, getcwd
 from PIL import Image
 
-classes = ["001","002"]
+
+classes = ["001","002","003","004","005"]
+
+
 
 def convert(size, box):
     dw = 1./size[0]
@@ -17,14 +20,21 @@ def convert(size, box):
     y = y*dh
     h = h*dh
     return (x,y,w,h)
-    
-    
 
-""" Configure Paths"""   
-mypath = "./Labels/002/"
+
+
+#mypath is input path of our image txt file folder
+#output path where store the final txt file
+#first we are take first object input path
+#The example have 001 folder and it is must. Please dont delete this
+""" Configure Paths"""
+mypath = "./Labels/005/"
 outpath = "./Labels/output/"
-
-cls = "002"
+if not os.path.exists(outpath):
+    os.mkdir(outpath)
+#cls is which object you want to train
+#now we are train first object
+cls = "005"
 if cls not in classes:
     exit(0)
 cls_id = classes.index(cls)
@@ -42,26 +52,29 @@ print(txt_name_list)
 """ Process """
 for txt_name in txt_name_list:
     # txt_file =  open("Labels/stop_sign/001.txt", "r")
-    
+
     """ Open input text files """
     txt_path = mypath + txt_name
     print("Input:" + txt_path)
     txt_file = open(txt_path, "r")
     lines = txt_file.read().split('\n')   #for ubuntu, use "\r\n" instead of "\n"
-    
+
     """ Open output text files """
     txt_outpath = outpath + txt_name
     print("Output:" + txt_outpath)
     txt_outfile = open(txt_outpath, "w")
-    
-    
+
+
     """ Convert the data to YOLO format """
     ct = 0
+    print(lines)
     for line in lines:
         #print('lenth of line is: ')
         #print(len(line))
         #print('\n')
-        if(len(line) >= 2):
+        elems = line.split(' ')
+        print(elems)
+        if(len(elems) >= 2):
             ct = ct + 1
             print(line + "\n")
             elems = line.split(' ')
@@ -91,5 +104,5 @@ for txt_name in txt_name_list:
     """ Save those images with bb into list"""
     if(ct != 0):
         list_file.write('%s/Images/%s/%s.jpg\n'%(wd, cls, os.path.splitext(txt_name)[0]))
-                
-list_file.close()       
+
+list_file.close()
