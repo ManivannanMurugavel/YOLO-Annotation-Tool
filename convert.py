@@ -1,18 +1,10 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Dec  9 14:55:43 2015
-
-This script is to convert the txt annotation files to appropriate format needed by YOLO 
-
-@author: Guanghan Ning
-Email: gnxr9@mail.missouri.edu
-"""
 
 import os
 from os import walk, getcwd
 from PIL import Image
 
-classes = ["001","002","003","004","005"]
+classes = ["001","002","003","004","005","006"]
 
 def convert(size, box):
     dw = 1./size[0]
@@ -31,10 +23,10 @@ def convert(size, box):
 """-------------------------------------------------------------------""" 
 
 """ Configure Paths"""   
-mypath = "./Labels/005/"
+mypath = "./Labels/006/"
 outpath = "./Labels/output/"
 
-cls = "005"
+cls = "006"
 if cls not in classes:
     exit(0)
 cls_id = classes.index(cls)
@@ -71,7 +63,9 @@ for txt_name in txt_name_list:
         #print('lenth of line is: ')
         #print(len(line))
         #print('\n')
-        if(len(line) >= 2):
+        elems = line.split(' ')
+        if(len(elems) >= 2):
+        #if(len(line) >= 2):
             ct = ct + 1
             print(line + "\n")
             elems = line.split(' ')
