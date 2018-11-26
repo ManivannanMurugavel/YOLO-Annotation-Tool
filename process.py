@@ -5,7 +5,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 
 print(current_dir)
 
-current_dir = '<Your Dataset Path>'
+current_dir = '/home/manivannan/YOLO-Annotation-Tool/Multi-Image-Train'
 
 # Directory where the data will reside, relative to 'darknet.exe'
 #path_data = './NFPAdataset/'
@@ -14,13 +14,13 @@ current_dir = '<Your Dataset Path>'
 percentage_test = 10;
 
 # Create and/or truncate train.txt and test.txt
-file_train = open('train.txt', 'w')  
+file_train = open('train.txt', 'w')
 file_test = open('test.txt', 'w')
 
 # Populate train.txt and test.txt
-counter = 1  
-index_test = round(100 / percentage_test)  
-for pathAndFilename in glob.iglob(os.path.join(current_dir, "*.jpg")):  
+counter = 1
+index_test = round(100 / percentage_test)
+for pathAndFilename in glob.iglob(os.path.join(current_dir, "*.jpg")):
     title, ext = os.path.splitext(os.path.basename(pathAndFilename))
 
     if counter == index_test:

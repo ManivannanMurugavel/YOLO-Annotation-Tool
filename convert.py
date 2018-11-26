@@ -1,12 +1,18 @@
-#This is the convert.py
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Dec  9 14:55:43 2015
+
+This script is to convert the txt annotation files to appropriate format needed by YOLO 
+
+@author: Guanghan Ning
+Email: gnxr9@mail.missouri.edu
+"""
+
 import os
 from os import walk, getcwd
 from PIL import Image
 
-
 classes = ["001","002","003","004","005"]
-
-
 
 def convert(size, box):
     dw = 1./size[0]
@@ -20,20 +26,14 @@ def convert(size, box):
     y = y*dh
     h = h*dh
     return (x,y,w,h)
+    
+    
+"""-------------------------------------------------------------------""" 
 
-
-
-#mypath is input path of our image txt file folder
-#output path where store the final txt file
-#first we are take first object input path
-#The example have 001 folder and it is must. Please dont delete this
-""" Configure Paths"""
+""" Configure Paths"""   
 mypath = "./Labels/005/"
 outpath = "./Labels/output/"
-if not os.path.exists(outpath):
-    os.mkdir(outpath)
-#cls is which object you want to train
-#now we are train first object
+
 cls = "005"
 if cls not in classes:
     exit(0)
@@ -47,34 +47,31 @@ txt_name_list = []
 for (dirpath, dirnames, filenames) in walk(mypath):
     txt_name_list.extend(filenames)
     break
-print(txt_name_list)
+# print(txt_name_list)
 
 """ Process """
 for txt_name in txt_name_list:
     # txt_file =  open("Labels/stop_sign/001.txt", "r")
-
+    
     """ Open input text files """
     txt_path = mypath + txt_name
     print("Input:" + txt_path)
     txt_file = open(txt_path, "r")
     lines = txt_file.read().split('\n')   #for ubuntu, use "\r\n" instead of "\n"
-
+    
     """ Open output text files """
     txt_outpath = outpath + txt_name
     print("Output:" + txt_outpath)
-    txt_outfile = open(txt_outpath, "w")
-
-
+    txt_outfile = open(txt_outpath, "a")
+    
+    
     """ Convert the data to YOLO format """
     ct = 0
-    print(lines)
     for line in lines:
         #print('lenth of line is: ')
         #print(len(line))
         #print('\n')
-        elems = line.split(' ')
-        print(elems)
-        if(len(elems) >= 2):
+        if(len(line) >= 2):
             ct = ct + 1
             print(line + "\n")
             elems = line.split(' ')
@@ -103,6 +100,6 @@ for txt_name in txt_name_list:
 
     """ Save those images with bb into list"""
     if(ct != 0):
-        list_file.write('%s/Images/%s/%s.jpg\n'%(wd, cls, os.path.splitext(txt_name)[0]))
-
-list_file.close()
+        list_file.write('%s/images/%s/%s.jpg\n'%(wd, cls, os.path.splitext(txt_name)[0]))
+                
+list_file.close()       
