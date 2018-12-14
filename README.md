@@ -11,7 +11,11 @@ cd YOLO-Annotation-Tool
 
 ### Convert to .JPEG from any type of images. Use this command(Ubuntu)
 
-```mogrify -format JPEG *.jpg```
+```mogrify -format jpg *.JPEG```
+or
+```mogrify -format jpg *.jpeg```
+or
+```mogrify -format jpg *.png```
 
 ### Run Main python script 
 
